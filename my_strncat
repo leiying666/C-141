@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include<assert.h>
+char* my_strncat(char* dest,const char* src,size_t count)
+{
+    assert(dest!=NULL&&src!=NULL);
+    char* ret=dest;
+    while(*dest!='\0')
+    {
+        dest++;
+    }
+    while(count>0)
+    {
+        *dest=*src;
+        if(*dest=='\0')
+        {
+            dest++;
+            count--;
+            break;
+        }
+        dest++;
+        src++;
+        count--;
+    }
+    return ret;
+}
+int main()
+{
+    char a[20]="abcdef";
+    char b[]="bit";
+    printf("%s\n",my_strncat(a,b,2));
+    printf("%s\n",my_strncat(a,b,5));
+    return 0;
+}
